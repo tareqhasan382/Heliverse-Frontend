@@ -85,7 +85,7 @@ const AllUser = () => {
           <>
             <div className=" flex flex-wrap justify-between gap-3  ">
               <div className=" w-full flex flex-row justify-between my-4 ">
-                <h1 className=" text-xl font-bold text-white ">All Users</h1>
+                <h1 className=" text-xl font-bold text-black ">All Users</h1>
                 <input
                   onChange={(e) => setSearch(e.target.value)}
                   type="text"
@@ -181,7 +181,7 @@ const AllUser = () => {
             {/*============================= Table ================================*/}
             <div>
               <div className="overflow-x-auto xs:overflow-x-scroll w-full ">
-                <table className=" shadow-2xl w-full rounded ">
+                <table className=" shadow-2xl w-full rounded  ">
                   <thead className=" w-full  text-white ">
                     <tr className=" w-[100%] ">
                       <th className=" py-3 md:px-2 bg-cyan-800 ">S.NO</th>
@@ -196,7 +196,7 @@ const AllUser = () => {
                     {users?.map((item: MenuItem, index: number) => (
                       <tr
                         key={item._id}
-                        className={`${tablebg} h-4  text-black cursor-pointer duration-300 `}
+                        className={`${tablebg} h-4 bg-green-400  text-black cursor-pointer duration-300 `}
                       >
                         {/* hover:scale-105 */}
                         <td>{index + 1}</td>
@@ -232,7 +232,7 @@ const AllUser = () => {
               </div>
               {/*====================== Pagination ============================*/}
               <div className="  py-2 border-black text-black items-center text-center ">
-                <div className=" flex bg-gray-300 rounded-lg p-6  ">
+                <div className=" flex bg-gray-400 rounded-lg p-6  ">
                   <button
                     onClick={prevPage}
                     className=" h-12 border-2 border-gray-600 px-4 rounded-l-lg hover:bg-gray-600 hover:text-white mr-2  "
