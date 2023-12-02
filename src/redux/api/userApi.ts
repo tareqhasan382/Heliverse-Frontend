@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { baseApi } from "./baseApi";
-interface Inputs {
-  id?: string;
-  first_name: string;
-  last_name: string;
-  email: string;
-  gender: "Male" | "Female" | "Others";
-  domain: string;
-  available: boolean;
-  avatar?: string;
-}
+// interface Inputs {
+//   _id?: string;
+//   first_name: string;
+//   last_name: string;
+//   email: string;
+//   gender: string;
+//   domain: string;
+//   available: string;
+//   avatar: string;
+// }
 const userApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     //============Get All User==========================
@@ -45,25 +45,13 @@ const userApi = baseApi.injectEndpoints({
     }),
 
     //============ End Add User==========================
-    //============ update  User==========================
-    updateUser: build.mutation<void, Pick<Inputs, "id"> & Partial<Inputs>>({
+    //============ update  User========================== /user/:id
+    updateUser: build.mutation<any, any>({
       query: ({ id, ...data }) => ({
-        url: `post/${id}`,
+        url: `/api/user/${id}`,
         method: "PATCH",
         body: data,
       }),
-      async onQueryStarted({ id, ...data }, { dispatch, queryFulfilled }) {
-        const res = dispatch(
-          userApi.util.updateQueryData("getUsers", id, (draft: any) => {
-            Object.assign(draft, data);
-          })
-        );
-        try {
-          await queryFulfilled;
-        } catch (error) {
-          res.undo();
-        }
-      },
     }),
     //============ End update User==========================
     getUser: build.query({

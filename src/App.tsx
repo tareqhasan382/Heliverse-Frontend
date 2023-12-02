@@ -1,10 +1,10 @@
 import "./App.css";
-import UserCard from "./components/UserCard";
+import AllUser from "./components/AllUser";
 
 const App = () => {
   return (
     <div>
-      <UserCard />
+      <AllUser />
     </div>
   );
 };

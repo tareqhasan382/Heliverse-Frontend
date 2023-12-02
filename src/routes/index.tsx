@@ -3,6 +3,8 @@ import App from "../App";
 import Home from "../components/Home";
 import NotFound from "../components/NotFound";
 import AddUser from "../components/AddUser";
+import EditUser from "../components/EditUser";
+import UserCard from "../components/UserCard";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -15,6 +17,14 @@ const routes = createBrowserRouter([
       {
         path: "/adduser",
         element: <AddUser />,
+      },
+      {
+        path: "/view/:id",
+        element: <UserCard />,
+      },
+      {
+        path: "/edit/:id",
+        element: <EditUser />,
       },
       {
         path: "*",

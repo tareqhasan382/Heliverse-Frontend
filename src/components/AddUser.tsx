@@ -85,7 +85,7 @@ const AddUser: React.FC = () => {
   // console.log("isSuccess:", isSuccess);
   // console.log("loading:", loading);
   return (
-    <div className=" flex items-center justify-center w-full py-14 bg-red-100 ">
+    <div className=" flex items-center justify-center w-full py-14 bg-slate-300 ">
       <div className=" lg:w-1/2 w-full px-4 lg:px-24 flex flex-col lg:flex-row justify-between gap-5 ">
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -195,7 +195,7 @@ const AddUser: React.FC = () => {
             <img src={URL.createObjectURL(selectImage)} alt="img" />
           ) : (
             <p className=" text-center ">
-              Food image upload preview will appear here!
+              image upload preview will appear here!
             </p>
           )}
         </div>
