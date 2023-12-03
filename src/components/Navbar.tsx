@@ -28,6 +28,9 @@ const Navbar = () => {
               <li className={styles.navlink}>
                 <Link to="/adduser">AddUser</Link>
               </li>
+              <li className={styles.navlink}>
+                <Link to="/team">Teams</Link>
+              </li>
 
               <li className=" flex items-center space-x-5 text-black ml-20  ">
                 <Link
@@ -76,6 +79,11 @@ const Navbar = () => {
               <li className=" py-3 hover:underline hover:decoration-red-500  ">
                 <Link onClick={() => setMenuOpen(false)} to="/adduser">
                   Add User
+                </Link>
+              </li>
+              <li className=" py-3 hover:underline hover:decoration-red-500  ">
+                <Link onClick={() => setMenuOpen(false)} to="/team">
+                  Teams
                 </Link>
               </li>
 

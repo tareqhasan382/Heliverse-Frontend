@@ -73,6 +73,11 @@ const AllUser = () => {
   //=================pagination======================================
   const users = data?.data;
   //const meta = data?.meta;
+  const uniqueData: MenuItem[] = users?.filter(
+    (item: any, index: any, self: any) =>
+      index === self.findIndex((t: any) => t.domain === item.domain)
+  );
+
   const tablebg = "hover:bg-white text-black";
   return (
     <div className=" flex items-center justify-center w-full ">
@@ -148,7 +153,7 @@ const AllUser = () => {
                       value="false"
                       className=" w-1/2 focus:outline-none h-10 rounded px-2 "
                     >
-                      In-Actice
+                      In-Active
                     </option>
                   </select>
                 </div>
@@ -165,7 +170,7 @@ const AllUser = () => {
                     >
                       Domain Selection
                     </option>
-                    {users?.map((user: MenuItem) => (
+                    {uniqueData?.map((user: MenuItem) => (
                       <option
                         key={user._id}
                         value={user.domain}

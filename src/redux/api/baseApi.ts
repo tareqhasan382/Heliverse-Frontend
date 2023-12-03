@@ -6,5 +6,5 @@ export const baseApi = createApi({
     baseUrl: "https://heliverse-backend-crud.vercel.app",
   }),
   endpoints: () => ({}),
-  tagTypes: ["user"],
+  tagTypes: ["user", "teams"],
 });

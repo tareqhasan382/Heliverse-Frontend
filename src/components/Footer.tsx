@@ -6,7 +6,7 @@ const Footer = () => {
           <div className="container mx-auto flex flex-col lg:flex-row gap-10  justify-between items-center">
             <div className="text-left">
               <h1 className="text-3xl font-extrabold tracking-wider">
-                Heliverse<span className="text-[#CC470A]">verse</span>
+                Heli<span className="text-[#CC470A]">verse</span>
               </h1>
               <p className="mt-2 text-sm">Discover, Explore, Enjoy!</p>
             </div>

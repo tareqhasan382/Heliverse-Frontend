@@ -5,6 +5,8 @@ import NotFound from "../components/NotFound";
 import AddUser from "../components/AddUser";
 import EditUser from "../components/EditUser";
 import UserCard from "../components/UserCard";
+import Team from "../components/Team";
+import TeamDetails from "../components/TeamDetails";
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -25,6 +27,14 @@ const routes = createBrowserRouter([
       {
         path: "/edit/:id",
         element: <EditUser />,
+      },
+      {
+        path: "/team",
+        element: <Team />,
+      },
+      {
+        path: "/teamDetails/:id",
+        element: <TeamDetails />,
       },
       {
         path: "*",
