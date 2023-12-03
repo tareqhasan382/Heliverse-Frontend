@@ -13,8 +13,8 @@ const TeamDetails = () => {
           Name:{team?.users?.first_name} {team?.users?.last_name}
         </p>
 
-        <p>Domain:{team?.users?.email} </p>
-        <p>Domain:{team?.users?.gender} </p>
+        <p>Email:{team?.users?.email} </p>
+        <p>Gender:{team?.users?.gender} </p>
         <p>Domain:{team?.users?.domain} </p>
         <p className=" flex flex-row">
           Available:{team?.users?.available ? <p>True</p> : <p>False</p>}{" "}
