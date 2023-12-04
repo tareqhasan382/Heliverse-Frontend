@@ -42,6 +42,7 @@ const userApi = baseApi.injectEndpoints({
           res.undo();
         }
       },
+      invalidatesTags: ["user"],
     }),
 
     //============ End Add User==========================
@@ -59,7 +60,6 @@ const userApi = baseApi.injectEndpoints({
         url: `/api/user/${id}`,
         method: "GET",
       }),
-      providesTags: ["user"],
     }),
 
     //============  delete User==========================

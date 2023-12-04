@@ -36,11 +36,8 @@ const AllUser = () => {
     domain,
     availability,
   };
-
-  const { data, isLoading } = useGetUsersQuery(
-    { ...query },
-    { refetchOnMountOrArgChange: true }
-  );
+  //{ refetchOnMountOrArgChange: true }
+  const { data, isLoading } = useGetUsersQuery({ ...query });
   // ===========delete food===================
   const [deleteUser] = useDeleteUserMutation();
 
