@@ -198,40 +198,41 @@ const AllUser = () => {
                 </tr>
               </thead>
               <tbody className=" bg-gray-300 text-black text-center  ">
-                {users?.map((item: MenuItem, index: number) => (
-                  <tr
-                    key={item._id}
-                    className={`${tablebg} h-4 bg-green-400  text-black cursor-pointer duration-300 `}
-                  >
-                    {/* hover:scale-105 */}
-                    <td>{index + 1}</td>
-                    <td>
-                      {item.first_name} {item.last_name}
-                    </td>
-                    <td>{item.gender} </td>
-                    <td>{item.domain} </td>
-                    <td>{item.available ? <p>True</p> : <p>False</p>} </td>
+                {!isLoading &&
+                  users?.map((item: MenuItem, index: number) => (
+                    <tr
+                      key={item._id}
+                      className={`${tablebg} h-4 bg-green-400  text-black cursor-pointer duration-300 `}
+                    >
+                      {/* hover:scale-105 */}
+                      <td>{index + 1}</td>
+                      <td>
+                        {item.first_name} {item.last_name}
+                      </td>
+                      <td>{item.gender} </td>
+                      <td>{item.domain} </td>
+                      <td>{item.available ? <p>True</p> : <p>False</p>} </td>
 
-                    <td className=" gap-3 ">
-                      <button className=" px-2 hover:text-green-700  border-none  ">
-                        <Link to={`/edit/${item._id}`}>
-                          <BiEdit size={20} />
-                        </Link>
-                      </button>
-                      <button
-                        onClick={() => handleDelete(item._id)}
-                        className=" px-2 hover:text-rose-700 border-none"
-                      >
-                        <MdDelete size={20} className=" text-red-700 " />
-                      </button>
-                      <button className=" px-2 hover:text-green-700 border-none">
-                        <Link to={`/view/${item._id}`}>
-                          <IoEye size={20} className=" /view/:id " />
-                        </Link>
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+                      <td className=" gap-3 ">
+                        <button className=" px-2 hover:text-green-700  border-none  ">
+                          <Link to={`/edit/${item._id}`}>
+                            <BiEdit size={20} />
+                          </Link>
+                        </button>
+                        <button
+                          onClick={() => handleDelete(item._id)}
+                          className=" px-2 hover:text-rose-700 border-none"
+                        >
+                          <MdDelete size={20} className=" text-red-700 " />
+                        </button>
+                        <button className=" px-2 hover:text-green-700 border-none">
+                          <Link to={`/view/${item._id}`}>
+                            <IoEye size={20} className=" /view/:id " />
+                          </Link>
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
