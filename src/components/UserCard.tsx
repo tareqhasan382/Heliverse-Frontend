@@ -9,6 +9,7 @@ const UserCard = () => {
     data: userData,
     isLoading: userLoading,
     refetch,
+    isFetching,
   } = useGetUserQuery(id);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const UserCard = () => {
   return (
     <div className="lg:px-48 md:px-20 items-center w-full flex justify-center h-full px-4 py-10 ">
       <div className="bg-slate-200 w-[320px] shadow-md items-center justify-center px-4 py-10 ">
-        {userLoading && (
+        {userLoading && isFetching && (
           <div>
             <h1 className="text-3xl font-bold">Loading</h1>
           </div>
