@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useGetTeamsQuery } from "../redux/api/teamApi";
 
 const Team = () => {
-  const { data, isLoading } = useGetTeamsQuery({
+  const { data, isLoading, isFetching } = useGetTeamsQuery({
     refetchOnMountOrArgChange: true,
   });
   const teams = data?.data;
@@ -11,15 +11,16 @@ const Team = () => {
   // console.log(isLoading);
   return (
     <div className="lg:px-48 md:px-20 items-center  w-full flex justify-center h-full px-4 py-10 ">
-      {isLoading ? (
-        <>
-          <h1>Loading</h1>
-        </>
-      ) : (
-        <div>
-          <h1 className=" text-xl font-bold text-center py-4 ">All Teams</h1>
-          <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full ">
-            {teams?.map((team: any) => (
+      <div>
+        <h1 className=" text-xl font-bold text-center py-4 ">All Teams</h1>
+        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full ">
+          {isLoading && isFetching && (
+            <>
+              <h1 className="text-xl font-bold text-center ">Loading</h1>
+            </>
+          )}
+          {!isLoading &&
+            teams?.map((team: any) => (
               <div key={team._id}>
                 <div className=" w-[250px] items-center justify-cente shadow-lg outline outline-gray-300/75 rounded p-5 ">
                   <p className=" flex flex-row ">
@@ -38,9 +39,8 @@ const Team = () => {
                 </div>
               </div>
             ))}
-          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };

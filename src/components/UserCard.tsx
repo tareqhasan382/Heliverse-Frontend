@@ -14,7 +14,7 @@ const UserCard = () => {
 
   useEffect(() => {
     refetch();
-  }, [id, refetch]);
+  }, [refetch]);
   //const { data: userData, isLoading: userLoading } = useGetUserQuery(id);
   const [createTeam, { isLoading: teamLoading }] = useCreateTeamMutation();
 
@@ -31,7 +31,7 @@ const UserCard = () => {
             <h1 className="text-3xl font-bold">Loading</h1>
           </div>
         )}
-        {!userLoading && (
+        {!userLoading && !isFetching && (
           <>
             <img
               src={userData?.data?.avatar}
