@@ -4,11 +4,11 @@ import Footer from "./Footer";
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Navbar></Navbar>
       <Outlet></Outlet>
       <Footer></Footer>
-    </div>
+    </>
   );
 };
 

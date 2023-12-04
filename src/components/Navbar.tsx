@@ -16,9 +16,9 @@ const Navbar = () => {
         {/*======================================== Dekstop menu ============================================*/}
         <div className=" lg:px-48 md:px-20  w-full flex items-center justify-between h-full px-4 ">
           <Link to="/">
-            <h1 className="text-black hover:text-gray-800 text-2xl sm:text-3xl lg:text-4xl font-bold cursor-pointer">
+            <p className="text-black hover:text-gray-800 text-2xl sm:text-3xl lg:text-4xl font-bold cursor-pointer">
               Heliverse
-            </h1>
+            </p>
           </Link>
           <div className=" text-black hidden sm:flex  ">
             <ul className=" hidden sm:flex ">
