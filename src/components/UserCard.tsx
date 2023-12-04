@@ -5,14 +5,18 @@ import { useNavigate, useParams } from "react-router-dom";
 const UserCard = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const userId = {
+    users: id,
+  };
   const { data } = useGetUserQuery(id);
+
   const user = data?.data;
   const [createTeam] = useCreateTeamMutation();
   const handleAddTeam = async () => {
-    const data = {
-      users: user?._id,
-    };
-    await createTeam(data).unwrap();
+    // const data = {
+    //   users: user?._id,
+    // };
+    await createTeam(userId).unwrap();
     // console.log(teamLoading);
     navigate("/team");
   };
