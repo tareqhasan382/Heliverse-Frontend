@@ -8,7 +8,7 @@ const UserCard = () => {
   const userId = {
     users: id,
   };
-  const { data } = useGetUserQuery(id);
+  const { data, isLoading } = useGetUserQuery(id);
 
   const user = data?.data;
   const [createTeam] = useCreateTeamMutation();
@@ -23,26 +23,36 @@ const UserCard = () => {
   return (
     <div className="lg:px-48 md:px-20 items-center  w-full flex justify-center h-full px-4 py-10 ">
       <div className=" bg-slate-200 w-[320px] shadow-md items-center justify-center px-4 py-10 ">
-        <img
-          src={user?.avatar}
-          alt="avatar"
-          className=" w-[100px] items-center object-cover justify-center "
-        />
-        <h1 className=" flex flex-row ">
-          Name: {user?.first_name} {user?.last_name}
-        </h1>
-        <h1>Domain: {user?.domain} </h1>
-        <h1>Email: {user?.email} </h1>
-        <h1>Gender: {user?.gender} </h1>
-        <h1 className=" flex flex-row ">
-          Availability: {user?.available ? <p> True</p> : <p> False</p>}
-        </h1>
-        <button
-          onClick={handleAddTeam}
-          className=" px-3 py-2 bg-black text-white rounded font-bold "
-        >
-          Create Team
-        </button>
+        {isLoading && (
+          <div>
+            {" "}
+            <h1 className=" text-3xl font-bold ">Loading</h1>{" "}
+          </div>
+        )}
+        {!isLoading && (
+          <>
+            <img
+              src={user?.avatar}
+              alt="avatar"
+              className=" w-[100px] items-center object-cover justify-center "
+            />
+            <h1 className=" flex flex-row ">
+              Name: {user?.first_name} {user?.last_name}
+            </h1>
+            <h1>Domain: {user?.domain} </h1>
+            <h1>Email: {user?.email} </h1>
+            <h1>Gender: {user?.gender} </h1>
+            <h1 className=" flex flex-row ">
+              Availability: {user?.available ? <p> True</p> : <p> False</p>}
+            </h1>
+            <button
+              onClick={handleAddTeam}
+              className=" px-3 py-2 bg-black text-white rounded font-bold "
+            >
+              Create Team
+            </button>
+          </>
+        )}
         {/* <form onSubmit={handleSubmit(onSubmit)} className=" py-2 gap-2 ">
           <input
             {...register("name")}
