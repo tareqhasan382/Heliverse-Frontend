@@ -1,20 +1,47 @@
 import { useCreateTeamMutation } from "../redux/api/teamApi";
-import { useGetUserQuery } from "../redux/api/userApi";
+// import { useGetUserQuery } from "../redux/api/userApi";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+export interface IUser {
+  _id: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  gender: string;
+  domain: string;
+  available: boolean;
+  avatar?: string;
+}
 const UserCard = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const {
-    data: userData,
-    isLoading: userLoading,
-    refetch,
-    isFetching,
-  } = useGetUserQuery(id);
-
+  // const {
+  //   data: userData,
+  //   isLoading: userLoading,
+  //   refetch,
+  //   isFetching,
+  // } = useGetUserQuery(id);
+  const [data, setData] = useState<IUser | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
-    refetch();
-  }, [refetch]);
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `https://heliverse-backend-crud.vercel.app/api/user/${id}`
+        );
+        const result = await response.json();
+
+        setData(result.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [id]);
+  console.log("data:", data);
   //const { data: userData, isLoading: userLoading } = useGetUserQuery(id);
   const [createTeam, { isLoading: teamLoading }] = useCreateTeamMutation();
 
@@ -26,27 +53,26 @@ const UserCard = () => {
   return (
     <div className="lg:px-48 md:px-20 items-center w-full flex justify-center h-full px-4 py-10 ">
       <div className="bg-slate-200 w-[320px] shadow-md items-center justify-center px-4 py-10 ">
-        {userLoading && isFetching && (
+        {loading && (
           <div>
             <h1 className="text-3xl font-bold">Loading</h1>
           </div>
         )}
-        {!userLoading && !isFetching && (
+        {!loading && (
           <>
             <img
-              src={userData?.data?.avatar}
+              src={data?.avatar}
               alt="avatar"
               className="w-[100px] items-center object-cover justify-center"
             />
             <h1 className="flex flex-row">
-              Name: {userData?.data?.first_name} {userData?.data?.last_name}
+              Name: {data?.first_name} {data?.last_name}
             </h1>
-            <h1>Domain: {userData?.data?.domain} </h1>
-            <h1>Email: {userData?.data?.email} </h1>
-            <h1>Gender: {userData?.data?.gender} </h1>
+            <h1>Domain: {data?.domain} </h1>
+            <h1>Email: {data?.email} </h1>
+            <h1>Gender: {data?.gender} </h1>
             <h1 className="flex flex-row ">
-              Availability:{" "}
-              {userData?.data?.available ? <p> True</p> : <p> False</p>}
+              Availability: {data?.available ? <p> True</p> : <p> False</p>}
             </h1>
             <button
               onClick={handleAddTeam}
