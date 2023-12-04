@@ -10,7 +10,7 @@ const UserCard = () => {
   };
   const { data, isLoading } = useGetUserQuery(id);
 
-  const user = data?.data;
+  // const user = data?.data;
   const [createTeam] = useCreateTeamMutation();
   const handleAddTeam = async () => {
     // const data = {
@@ -25,25 +25,25 @@ const UserCard = () => {
       <div className=" bg-slate-200 w-[320px] shadow-md items-center justify-center px-4 py-10 ">
         {isLoading && (
           <div>
-            {" "}
             <h1 className=" text-3xl font-bold ">Loading</h1>{" "}
           </div>
         )}
         {!isLoading && (
           <>
             <img
-              src={user?.avatar}
+              src={data?.data?.avatar}
               alt="avatar"
               className=" w-[100px] items-center object-cover justify-center "
             />
             <h1 className=" flex flex-row ">
-              Name: {user?.first_name} {user?.last_name}
+              Name: {data?.data?.first_name} {data?.data?.last_name}
             </h1>
-            <h1>Domain: {user?.domain} </h1>
-            <h1>Email: {user?.email} </h1>
-            <h1>Gender: {user?.gender} </h1>
+            <h1>Domain: {data?.data?.domain} </h1>
+            <h1>Email: {data?.data?.email} </h1>
+            <h1>Gender: {data?.data?.gender} </h1>
             <h1 className=" flex flex-row ">
-              Availability: {user?.available ? <p> True</p> : <p> False</p>}
+              Availability:{" "}
+              {data?.data?.available ? <p> True</p> : <p> False</p>}
             </h1>
             <button
               onClick={handleAddTeam}
