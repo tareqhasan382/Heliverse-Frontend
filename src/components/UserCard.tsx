@@ -1,12 +1,20 @@
 import { useCreateTeamMutation } from "../redux/api/teamApi";
 import { useGetUserQuery } from "../redux/api/userApi";
 import { useNavigate, useParams } from "react-router-dom";
-
+import { useEffect } from "react";
 const UserCard = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const {
+    data: userData,
+    isLoading: userLoading,
+    refetch,
+  } = useGetUserQuery(id);
 
-  const { data: userData, isLoading: userLoading } = useGetUserQuery(id);
+  useEffect(() => {
+    refetch();
+  }, [id, refetch]);
+  //const { data: userData, isLoading: userLoading } = useGetUserQuery(id);
   const [createTeam, { isLoading: teamLoading }] = useCreateTeamMutation();
 
   const handleAddTeam = async () => {
