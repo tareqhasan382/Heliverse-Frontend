@@ -37,6 +37,7 @@ const teamApi = baseApi.injectEndpoints({
         url: `/api/team/${id}`,
         method: "GET",
       }),
+      providesTags: ["teams"],
     }),
   }),
 });
